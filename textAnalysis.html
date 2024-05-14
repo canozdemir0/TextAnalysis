@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analysis</title>
+</head>
+
+<body>
+    <h1>Text Analysis App</h1>
+    <hr>
+    <label for="">Text</label>
+    <input style="margin-top: 15px;" type="text" placeholder="Please entry text" name="" id="textInput">
+    <button onclick="analysis()">Analysis</button>
+    <div id="result"></div>
+
+</body>
+<script>
+    function analysis() {
+
+        var text = document.getElementById("textInput").value;
+
+        //kelime sayısı hesaplama;
+        var textCount = text.split(/\s+/).filter(function (word) {
+            return word.length > 0;
+        }).length;
+
+        //Karakter sayısı hesaplama
+        var characterCount = text.replace(/\s/g, '').length;
+
+
+        // Cümle sayısı hesaplama
+        var sentenceCount = text.split(/[.!?]+/).filter(function (sentence) {
+            return sentence.length > 0;
+        }).length;
+
+
+        var resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = "<p>Toplam kelime sayısı: " + textCount + "</p>" +
+            "<p>Toplam karakter sayısı: " + characterCount + "</p>" +
+            "<p>Toplam cümle sayısı: " + sentenceCount + "</p>";
+
+    }
+</script>
+
+</html>
